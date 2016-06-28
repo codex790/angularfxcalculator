@@ -1,0 +1,24 @@
+﻿<html>
+<head>
+    <title>Foreign Exchange Calculator</title>
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/dataService.js"></script>
+</head>
+<body ng-app="fxCalculator">
+<form ng-controller="CurrencyController as vm">
+    <h3>Currency Exchange Rate Converter</h3>
+    <hr/>
+    <div class="form-inline">
+        <label>From</label>
+        <select class="form-control" ng-options="currency.Base for currency in vm.currencies" ng-model="vm.fromCurrency"></select>
+        <input class="form-control" ng-model="vm.fromVal" ng-change="vm.calcCurrency()">
+        <label>To</label>
+        <select class="form-control" ng-options="currency.Base for currency in vm.currencies" ng-model="vm.toCurrency" ng-change="vm.calcCurrency()"></select>
+        <fieldset disabled="disabled" class="form-control">{{ vm.calcCurrency() }}</fieldset>
+    </div>
+    <label>{{ vm.ErrorMessage }}</label>
+</form>
+</body>
+</html>
